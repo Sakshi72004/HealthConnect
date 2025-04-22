@@ -10,16 +10,15 @@ $doctor_id = $_SESSION['user_id'];
 $patient_id = $_POST['patient_id'];
 $next_date = $_POST['next_visit_date'];
 $next_time = $_POST['next_visit_time'];
-$instructions = $conn->real_escape_string($_POST['instructions']); // Escape special characters for security
+$instructions = $conn->real_escape_string($_POST['instructions']);
 
 if (isset($_FILES['report_file'])) {
     $filename = $_FILES['report_file']['name'];
     $tmp_name = $_FILES['report_file']['tmp_name'];
 
-    // Ensure the uploads directory exists
     $upload_dir = "uploads/";
     if (!is_dir($upload_dir)) {
-        mkdir($upload_dir, 0777, true); // Create the directory with write permissions
+        mkdir($upload_dir, 0777, true);
     }
 
     $filepath = $upload_dir . time() . "_" . basename($filename);
@@ -49,7 +48,7 @@ if (isset($_FILES['report_file'])) {
 <html>
 <head>
     <title>Report Upload Status</title>
-    <link rel="stylesheet" href="../css/style.css"> <!-- Link to the existing CSS file -->
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         body {
             font-family: Arial, sans-serif;
